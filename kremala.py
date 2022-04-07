@@ -48,8 +48,12 @@ images = [PhotoImage(file="images/hangman0.png"), PhotoImage(file="images/hangma
 global the_word_with_spaces  # Εδώ αποθηκεύεται η λέξη με κενά ενδιάμεσα στα γράμματα
 global number_of_guesses  # Μεταβλητή που αποθηκεύει τον αριθμό των λανθασμένων μαντεψιών
 global the_word  # Εδώ αποθηκεύεται η λέξη
-global top_window
 max_number_of_guesses = 6  # Αρχικοποίηση μέγιστου αριθμού μαντεψιών
+
+# Φτιάχνουμε και κλείνουμε ένα παράθυρο για να μη βγαίνει bug στο μενού επιπέδου δυσκολίας
+# και να οριστεί σωστά το top_window
+top_window = Toplevel()  # Φτιάχνουμε το παράθυρο επιλογής δυσκολίας
+top_window.destroy()  # Κλείνουμε το παράθυρο δυσκολίας
 
 
 # Συνάρτηση για νέο παιχνίδι
@@ -57,6 +61,7 @@ def game():
     global the_word_with_spaces
     global number_of_guesses
     global the_word
+    global max_number_of_guesses
     btn_dif.config(state=ACTIVE)  # Ενεργοποιεί το κουμπί επιλογής δυσκολίας
     keyboard_active(True)  # Ενεργοποίηση κουμπιών αλφαβήτου
     number_of_guesses = 0  # Αρχικοποίηση του αριθμού των μαντεψιών
